@@ -2,7 +2,7 @@
 import { useGetUsersAllCoursesQuery } from "@/redux/features/courses/coursesApi";
 import { useGetHeroDataQuery } from "@/redux/features/layout/layoutApi";
 import { useSearchParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState ,Suspense} from "react";
 import Loader from "../components/Loader/Loader";
 import Header from "../components/Header";
 import Heading from "../utils/Heading";
@@ -91,6 +91,8 @@ const Page = (props: Props) => {
                   </div>
                 ))}
             </div>
+            <Suspense fallback={<Loader />}>
+
             {
                 courses && courses.length === 0 && (
                     <p className={`${styles.label} justify-center min-h-[50vh] flex items-center`}>
@@ -106,6 +108,7 @@ const Page = (props: Props) => {
                   <CourseCard item={item} key={index} />
                 ))}
             </div>
+            </Suspense>
           </div>
           <Footer />
         </>
