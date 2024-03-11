@@ -91,24 +91,26 @@ const Page = (props: Props) => {
                   </div>
                 ))}
             </div>
-            <Suspense fallback={<Loader />}>
-
-            {
-                courses && courses.length === 0 && (
-                    <p className={`${styles.label} justify-center min-h-[50vh] flex items-center`}>
-                    {search ? "No courses found!" : "No courses found in this category. Please try another one!"}
-                  </p>
-                )
-            }
-            <br />
-            <br />
-            <div className="grid grid-cols-1 gap-[20px] md:grid-cols-2 md:gap-[25px] lg:grid-cols-3 lg:gap-[25px] 1500px:grid-cols-4 1500px:gap-[35px] mb-12 border-0">
-              {courses &&
-                courses.map((item: any, index: number) => (
-                  <CourseCard item={item} key={index} />
-                ))}
-            </div>
-            </Suspense>
+             <Suspense fallback={<Loader />}>
+          {courses && courses.length === 0 ? (
+            <p className={`${styles.label} justify-center min-h-[50vh] flex items-center`}>
+              {search
+                ? "No courses found!"
+                : "No courses found in this category. Please try another one!"}
+            </p>
+          ) : (
+            <>
+              <br />
+              <br />
+              <div className="grid grid-cols-1 gap-[20px] md:grid-cols-2 md:gap-[25px] lg:grid-cols-3 lg:gap-[25px] 1500px:grid-cols-4 1500px:gap-[35px] mb-12 border-0">
+                {courses &&
+                  courses.map((item: any, index: number) => (
+                    <CourseCard item={item} key={index} />
+                  ))}
+              </div>
+            </>
+          )}
+        </Suspense>
           </div>
           <Footer />
         </>
