@@ -1,5 +1,7 @@
 import Link from "next/link";
 import React from "react";
+import "../styles/navItems.css"
+import { styles } from "../styles/style";
 
 export const navItemsData = [
   {
@@ -10,31 +12,34 @@ export const navItemsData = [
     name: "Courses",
     url: "/courses",
   },
+ 
+
+  {
+    name:"contact us",
+    url:"/contact"
+  },
+  {
+    name: "Policy",
+    url: "/policy",
+  },
+  {
+    name: "FAQ",
+    url: "/faq",
+  },
   {
     name: "About",
     url: "/about",
   },
   // {
-  //   name: "Policy",
-  //   url: "/policy",
+  //    name:"Notes",
+  //    url:"/notes",
   // },
   // {
-  //   name: "FAQ",
-  //   url: "/faq",
-  // },
-  {
-     name:"Notes",
-     url:"/notes",
-  },
-  {
-    name:"Test",
-    url:"/test"
+  //   name:"Test",
+  //   url:"/test"
 
-  },
-  {
-    name:"contact us",
-    url:"/contact"
-  }
+  // },
+ 
 
 ];
 
@@ -51,11 +56,11 @@ const NavItems: React.FC<Props> = ({ activeItem, isMobile }) => {
           navItemsData.map((i, index) => (
             <Link href={`${i.url}`} key={index} passHref>
               <span
-                className={`${
+                className={` ${
                   activeItem === index
-                    ? "dark:text-[#37a39a] text-[crimson]"
-                    : "dark:text-white text-black"
-                } text-[18px] px-6 font-Poppins font-[400]`}
+                    ? "dark:text-[#37a39a] text-[crimson] "
+                    : "dark:text-white dark:hover:text-[#37a39a]   text-black hover:text-[crimson] "
+                } text-[18px] px-6 font-Poppins font-[400] `}
               >
                 {i.name}
               </span>
@@ -73,18 +78,12 @@ const NavItems: React.FC<Props> = ({ activeItem, isMobile }) => {
           </div>
             {navItemsData &&
               navItemsData.map((i, index) => (
-<<<<<<< HEAD
-                // <Link href="/" passHref key={index}>
                 <Link href={`${i.url}`} key={index} passHref>
-
-=======
-                <Link href={`${i.url}`} key={index} passHref>
->>>>>>> c702f9fde863d7a38947d524c51e0181ccdc0da8
-                  <span
+                <span
                     className={`${
                       activeItem === index
-                        ? "dark:text-[#37a39a] text-[crimson]"
-                        : "dark:text-white text-black"
+                        ? "dark:text-[#37a39a] text-[crimson] "
+                        : "dark:text-white dark:hover:text-[#37a39a] text-black hover:text-[crimson] "
                     } block py-5 text-[18px] px-6 font-Poppins font-[400]`}
                   >
                     {i.name}

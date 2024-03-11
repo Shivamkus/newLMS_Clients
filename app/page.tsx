@@ -8,7 +8,7 @@ import Reviews from "./components/Route/Reviews";
 import FAQ from "./components/FAQ/FAQ";
 import Footer from "./components/Footer";
 // import Attendance from "./components/Route/attandance";
-import Quiz from "./components/Quiz/Quizecomp"
+// import Quiz from "./components/Quiz/Quizecomp"
 
 interface Props {}
 
@@ -36,7 +36,7 @@ const Page: FC<Props> = (props) => {
       <Courses />
       <Reviews />
       <FAQ />
-      <Quiz/>
+      {/* <Quiz/> */}
       <Footer />
     </div>
   );

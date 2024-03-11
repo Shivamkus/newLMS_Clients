@@ -2,7 +2,7 @@
 import { useGetHeroDataQuery } from "@/redux/features/layout/layoutApi";
 import Image from "next/image";
 import Link from "next/link";
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { BiSearch } from "react-icons/bi";
 import Loader from "../Loader/Loader";
 import { useRouter } from "next/navigation";
@@ -14,13 +14,37 @@ const Hero: FC<Props> = (props) => {
   const [search,setSearch] = useState("");
   const router = useRouter()
   
+ 
+  
+  // const handleSearch = () => {
+  //  if(search === ""){
+  //   return
+  //  }else{
+  //   router.push(`/courses?title=${search}`);
+  //  }
+  // }
+
+  useEffect(() => {
+    const handleEnterKeyPress = (e: { key: string; }) => {
+      if (e.key === "Enter" && search.trim() !== "") {
+        handleSearch();
+      }
+    };
+
+    window.addEventListener("keydown", handleEnterKeyPress);
+
+    return () => {
+      window.removeEventListener("keydown", handleEnterKeyPress);
+    };
+  }, [search]);
+
   const handleSearch = () => {
-   if(search === ""){
-    return
-   }else{
-    router.push(`/courses?title=${search}`);
-   }
-  }
+    if (search === "") {
+      return;
+    } else {
+      router.push(`/courses?title=${encodeURIComponent(search)}`);
+    }
+  };
 
 
   return (
