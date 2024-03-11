@@ -15,6 +15,8 @@ const CoursePlayer: FC<Props> = ({ videoUrl }) => {
   useEffect(() => {
     axios
       .post("https://new-lms-backend.onrender.com/api/v1/getVdoCipherOTP", {
+        // .post("http://localhost:3000/api/v1/getVdoCipherOTP", {
+
         videoId: videoUrl,
       })
       .then((res) => {
